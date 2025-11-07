@@ -16,7 +16,7 @@ document.querySelector("#root").appendChild(document.createElement("div")).id =
 document.querySelector("#root").appendChild(document.createElement("div")).id =
   "code-editor";
 
-document.querySelector("#code-editor").style.height = "600px";
+document.querySelector("#code-editor").style.height = "800px";
 document.querySelector("#code-editor").style.width = "600px";
 
 document.querySelector("#root").appendChild(document.createElement("div")).id =

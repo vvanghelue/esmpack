@@ -2,11 +2,23 @@ export function getReactTemplateFiles() {
   const files = [];
   const ENTRY_FILE = "src/index.tsx";
 
-  files.push({
-    path: "src/index.tsx",
-    content: `import React from "react";
+  files.push(
+    {
+      path: "style.css",
+      content: `body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 0;
+  background-color: #ff0000ff;
+}
+  `,
+    },
+    {
+      path: "src/index.tsx",
+      content: `import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
+import "./style.css";
 
 const container = document.getElementById("root");
 
@@ -20,23 +32,24 @@ createRoot(container).render(
   </React.StrictMode>
 );
 `,
-  });
+    }
+  );
 
   files.push({
     path: "src/App.tsx",
     content: `import React from "react";
 import HelloWorld from "./components/HelloWorld";
 import Counter from "./components/Counter.tsx";
-//import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
-const App = () => (
-  <main>
-    <HelloWorld name="ESM Pack" />
-    <Counter />
-  </main>
-);
-
-export default App;
+export default function App() {
+    return (
+    <main>
+        <HelloWorld name="ESM Pack" />
+        <Counter />
+    </main>
+    );
+}
 `,
   });
 
