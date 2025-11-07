@@ -4,12 +4,12 @@ export function getReactTemplateFiles() {
 
   files.push(
     {
-      path: "style.css",
+      path: "src/style.css",
       content: `body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 0;
   padding: 0;
-  background-color: #ff0000ff;
+  background-color: #ffffff;
 }
   `,
     },

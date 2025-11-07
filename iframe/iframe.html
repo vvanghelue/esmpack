@@ -5,38 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>iframe</title>
     <style>
-      body {
-        margin: 0;
-        font-family:
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          sans-serif;
-        background: #111827;
-        color: #f9fafb;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-
-      #app-shell {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        padding: 16px;
-        gap: 12px;
-      }
-
-      #root {
-        background: #1f2937;
-        border-radius: 8px;
-        min-height: 300px;
-        padding: 16px;
-      }
-
       #messages {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        min-height: 100px;
         background: #0f172a;
+        color: #fff;
         border-radius: 8px;
         padding: 12px;
         font-size: 13px;
@@ -46,10 +22,8 @@
     </style>
   </head>
   <body>
-    <div id="app-shell">
-      <div id="root"></div>
-      <pre id="messages" aria-live="polite">Waiting for bundle...</pre>
-    </div>
+    <div id="root"></div>
+    <pre id="messages" aria-live="polite">Waiting for bundle...</pre>
     <script type="module" src="iframe.js"></script>
   </body>
 </html>

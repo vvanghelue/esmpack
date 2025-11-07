@@ -3,6 +3,7 @@ let rootEl = document.getElementById("root");
 let esbuildPromise;
 let currentModuleUrl = null;
 let buildCounter = 0;
+let currentStyleElements = [];
 
 const postToParent = (message) => {
   window.parent.postMessage(message, "*");
@@ -16,6 +17,30 @@ const resetRoot = () => {
   const fresh = rootEl.cloneNode(false);
   rootEl.replaceWith(fresh);
   rootEl = fresh;
+};
+
+const applyCss = (cssChunks) => {
+  if (currentStyleElements.length) {
+    for (const styleEl of currentStyleElements) {
+      styleEl.remove();
+    }
+    currentStyleElements = [];
+  }
+
+  if (!Array.isArray(cssChunks) || cssChunks.length === 0) {
+    return;
+  }
+
+  for (const cssText of cssChunks) {
+    if (typeof cssText !== "string" || !cssText.trim()) {
+      continue;
+    }
+    const styleEl = document.createElement("style");
+    styleEl.type = "text/css";
+    styleEl.textContent = cssText;
+    document.head.appendChild(styleEl);
+    currentStyleElements.push(styleEl);
+  }
 };
 
 const ensureImportMap = (() => {
@@ -203,6 +228,8 @@ const buildBundle = async (files, entry) => {
     jsx: "automatic",
     jsxImportSource: "react",
     logLevel: "silent",
+    outdir: "/",
+    assetNames: "[name]",
     plugins: [virtualFsPlugin],
   });
 
@@ -214,11 +241,26 @@ const buildBundle = async (files, entry) => {
         })
       : [];
 
-  const output = result.outputFiles?.[0]?.text ?? "";
-  return { code: output, warnings };
+  const outputFiles = result.outputFiles ?? [];
+  const cssOutputs = [];
+  let jsOutput = "";
+
+  for (const file of outputFiles) {
+    if (file.path.endsWith(".css")) {
+      cssOutputs.push(file.text);
+      continue;
+    }
+    if (!jsOutput) {
+      jsOutput = file.text;
+    }
+  }
+
+  return { code: jsOutput, css: cssOutputs, warnings };
 };
 
-const runBundle = async (bundleCode) => {
+const runBundle = async (bundleCode, cssChunks) => {
+  applyCss(cssChunks);
+
   if (currentModuleUrl) {
     URL.revokeObjectURL(currentModuleUrl);
     currentModuleUrl = null;
@@ -248,7 +290,7 @@ const handleFilesUpdate = async (payload) => {
 
   try {
     setMessage("Building preview...");
-    const { code, warnings } = await buildBundle(files, entry);
+    const { code, css, warnings } = await buildBundle(files, entry);
     if (token !== buildCounter) {
       return;
     }
@@ -257,7 +299,7 @@ const handleFilesUpdate = async (payload) => {
       throw new Error("Bundle is empty. Check your entry file exports.");
     }
 
-    await runBundle(code);
+    await runBundle(code, css);
     if (token !== buildCounter) {
       return;
     }
