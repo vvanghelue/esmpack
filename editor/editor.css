@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+#file-browser {
+  min-width: 240px;
+}
+
+.file-browser {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 12px 8px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.file-browser ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.file-browser li {
+  margin: 0;
+}
+
+.file-browser .item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.file-browser .item:hover {
+  background-color: #f3f4f6;
+}
+
+.file-browser .item.active {
+  background-color: #e0edff;
+  color: #1d4ed8;
+}
+
+.file-browser .item.active .material-icons {
+  color: #1d4ed8;
+}
+
+.file-browser .label {
+  flex: 1;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-browser .nested {
+  border-left: 1px dashed #e5e7eb;
+  margin-left: 16px;
+  padding-left: 12px;
+}
+
+.file-browser .folder-node.collapsed > .nested {
+  display: none;
+}
+
+.file-browser .folder-node.collapsed > .item .toggle-icon {
+  transform: rotate(-90deg);
+}
+
+.material-icons {
+  font-size: 18px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-icon {
+  color: #6b7280;
+  transition: transform 0.15s ease;
+  width: 20px;
+}
+
+.folder-icon {
+  color: #f59e0b;
+}
+
+.file-icon {
+  color: #60a5fa;
+}

@@ -1,0 +1,31 @@
+{
+    "editor.formatOnSave": true,
+    "[css]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "chat.tools.terminal.autoApprove": {
+        "mv": true,
+        "npm create": true,
+        "npm install": true,
+        "npx": true,
+        "git status": true,
+        "git commit": true
+    },
+    "chat.agent.maxRequests": 50
+}
