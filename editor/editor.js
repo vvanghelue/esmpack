@@ -23,7 +23,7 @@ document.querySelector("#root").appendChild(document.createElement("div")).id =
   "iframe-container";
 
 const iframe = document.createElement("iframe");
-iframe.src = "/iframe/iframe.html";
+iframe.src = "../iframe/iframe.html";
 iframe.style.width = "700px";
 iframe.style.minHeight = "100vh";
 document.querySelector("#iframe-container").appendChild(iframe);
