@@ -1,7 +1,7 @@
 import { EditorView, basicSetup } from "codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import FileBrowser from "./file-browser/file-browser.js";
-import { getReactTemplateFiles } from "./_react-template/_react-template.js";
+import { getReactTemplateFiles } from "./react-template/react-template.js";
 
 const { files, ENTRY_FILE } = getReactTemplateFiles();
 

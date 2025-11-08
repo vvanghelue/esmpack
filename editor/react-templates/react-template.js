@@ -44,7 +44,17 @@ import { BrowserRouter } from "react-router-dom";
 
 
 export default function App() {
-throw new Error("Root element #root not found");
+//throw new Error("Root element #root not found");
+
+  React.useEffect(() => {
+    async function fetchApi() {
+      const res = await fetch("https://localhost:7676/api-proxy-v1/http://localhost:3018/insurance-contracts/api/v2/contracts");
+      const data = await res.json();
+      console.log(data);
+    }
+    fetchApi();
+  }, []);
+
     return (
     <main>
         <HelloWorld name="ESM Pack" />
