@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ESM Pack Playground</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    main {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-radius: 1rem;
+      background: rgba(15, 23, 42, 0.8);
+      box-shadow: 0 20px 45px rgba(2, 6, 23, 0.6);
+      max-width: 32rem;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+    }
+    p {
+      line-height: 1.6;
+      margin: 0 auto 1.5rem;
+      max-width: 28rem;
+    }
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Welcome to ESM Pack</h1>
+    <p>
+      This GitHub Pages site hosts the public playground for loading ES modules inside an iframe and
+      experimenting with cross-context communication using <code>postMessage</code>.
+    </p>
+    <p>
+      Explore the source, contribute improvements, or spin up your own experiments straight from the
+      repository on GitHub.
+    </p>
+    <p>
+      <a href="https://github.com/your-username/esmpack">View the project on GitHub</a>
+    </p>
+    <footer>Deploys automatically from the <code>main</code> branch via GitHub Pages.</footer>
+  </main>
+</body>
+</html>
