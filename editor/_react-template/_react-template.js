@@ -42,7 +42,9 @@ import HelloWorld from "./components/HelloWorld";
 import Counter from "./components/Counter.tsx";
 import { BrowserRouter } from "react-router-dom";
 
+
 export default function App() {
+throw new Error("Root element #root not found");
     return (
     <main>
         <HelloWorld name="ESM Pack" />

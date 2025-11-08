@@ -1,4 +1,5 @@
 import { applyCss, resetRoot } from "../dom.js";
+import { clearErrorOverlay } from "../error-handler.js";
 import { ensureEsbuild } from "./esbuild.js";
 import { ensureImportMap } from "./import-map.js";
 import {
@@ -87,6 +88,7 @@ export const buildBundle = async (files, entry) => {
     target: ["es2022"],
     jsx: "automatic",
     jsxImportSource: "react",
+    sourcemap: "inline",
     logLevel: "silent",
     outdir: "/",
     assetNames: "[name]",
@@ -119,6 +121,7 @@ export const buildBundle = async (files, entry) => {
 };
 
 export const runBundle = async (bundleCode, cssChunks) => {
+  clearErrorOverlay();
   applyCss(cssChunks);
 
   if (currentModuleUrl) {
